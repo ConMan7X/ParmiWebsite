@@ -13,26 +13,26 @@ import { generateID } from './helperFunctions';
  * @returns HTTPError or success message
  */
 export function register(email: string, password: string, username: string) {
-	const data: DataStore = getData();
+  const data: DataStore = getData();
 
-	const id: string = generateID();
+  const id: string = generateID();
 
-	const hashedPassword: string = sha256(password);
+  const hashedPassword: string = sha256(password);
 
-	const result = data.users.filter(
-		(user) => user.email === email && user.password === hashedPassword
-	);
+  const result = data.users.filter(
+    (user) => user.email === email && user.password === hashedPassword
+  );
 
-	if (result.length !== 0) {
-		throw HTTPError(400, 'User already exists!');
-	}
+  if (result.length !== 0) {
+    throw HTTPError(400, 'User already exists!');
+  }
 
-	const newUser: User = { id, email, password: hashedPassword, username };
-	data.users.push(newUser);
-	setData(data);
-	return {
-		message: 'Account created successfully!',
-	};
+  const newUser: User = { id, email, password: hashedPassword, username };
+  data.users.push(newUser);
+  setData(data);
+  return {
+    message: 'Account created successfully!',
+  };
 }
 
 /**
@@ -41,20 +41,20 @@ export function register(email: string, password: string, username: string) {
  * @param password: password
  */
 export function login(email: string, password: string) {
-	const data:DataStore = getData();
+  const data: DataStore = getData();
 
-	const hashedPassword = sha256(password);
+  const hashedPassword = sha256(password);
 
-	const result = data.users.filter(
-		item => item.email === email && item.password === hashedPassword
-	);
+  const result = data.users.filter(
+    (item) => item.email === email && item.password === hashedPassword
+  );
 
-	if (result.length !== 1) {
-		throw HTTPError(400, 'Incorrect credentials')
-	}
+  if (result.length !== 1) {
+    throw HTTPError(400, 'Incorrect credentials');
+  }
 
-	return {
-		message: 'Login successful',
-		id: result[0].id
-	};
+  return {
+    message: 'Login successful',
+    id: result[0].id,
+  };
 }
