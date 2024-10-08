@@ -4,8 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #ffffffde;
+  background-color: #353535;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -33,6 +33,25 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+header {
+  background-color:red;
+  padding-left:2%;
+  text-align:left;
+  width:100%;
+  position:absolute;
+  top:0;
+  left:0;
+}
+
+footer {
+  background-color: red;
+  text-align:center;
+  width:100%;
+  position:absolute;
+  bottom:0;
+  left:0;
 }
 
 button {
