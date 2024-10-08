@@ -24,14 +24,14 @@ export function register(email: string, password: string, username: string) {
 	);
 
 	if (result.length !== 0) {
-		throw HTTPError(400, "User already exists!");
+		throw HTTPError(400, 'User already exists!');
 	}
 
 	const newUser: User = { id, email, password: hashedPassword, username };
 	data.users.push(newUser);
 	setData(data);
 	return {
-		message: "Account created successfully!",
+		message: 'Account created successfully!',
 	};
 }
 
@@ -41,5 +41,20 @@ export function register(email: string, password: string, username: string) {
  * @param password: password
  */
 export function login(email: string, password: string) {
+	const data:DataStore = getData();
 
+	const hashedPassword = sha256(password);
+
+	const result = data.users.filter(
+		item => item.email === email && item.password === hashedPassword
+	);
+
+	if (result.length !== 1) {
+		throw HTTPError(400, 'Incorrect credentials')
+	}
+
+	return {
+		message: 'Login successful',
+		id: result[0].id
+	};
 }
