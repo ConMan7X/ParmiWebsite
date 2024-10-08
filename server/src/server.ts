@@ -1,7 +1,7 @@
 import express, { json, Request, Response } from 'express';
 import errorHandler from 'middleware-http-errors';
 import cors from 'cors';
-import { register } from './auth';
+import { register, login } from './auth';
 
 const app = express();
 
@@ -17,20 +17,26 @@ app.use(cors());
 
 app.get('/api', (req: Request, res: Response) => {
 
-    res.json({
-
-        message: "Hello world",
-
-    });
+	res.json({
+		message: "Hello world",
+	});
 
 });
 
 // Post request for registering users
 app.post('/api/register', async (req: Request, res: Response) => {
-    const { email, password, username } = req.body;
+	const { email, password, username } = req.body;
 
-    const response = register(email, password, username);
-    res.json(response);
+	const response = register(email, password, username);
+	res.json(response);
+});
+
+// Post request for logging in users
+app.post("/api/login", (req: Request, res: Response) => {
+	const {email, password} = req.body;
+
+	const response = login(email, password);
+	res.json(response);
 });
 
 app.use(errorHandler());
