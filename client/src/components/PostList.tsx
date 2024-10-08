@@ -5,7 +5,13 @@ function PostList() {
   return (
     <section>
       {postsData.map((post) => (
-        <Post key={post.id} title={post.title} content={post.content} />
+        <Post
+          key={post.id}
+          title={post.title}
+          author={post.author}
+          content={post.content}
+          createdAt={Date.parse(post.createdAt)}
+        />
       ))}
     </section>
   );
