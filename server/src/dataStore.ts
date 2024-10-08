@@ -1,4 +1,4 @@
-import { DataStore } from "./Interfaces";
+import { DataStore } from "./interfaces";
 
 let data: DataStore = {
 	users: []

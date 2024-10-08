@@ -4,17 +4,40 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
-
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     console.log({ email, password });
-
     setEmail("");
-
     setPassword("");
+  };
+
+  const loginUser = () => {
+    fetch("http://localhost:4000/api/login", {
+      method: "POST",
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error_message) {
+          alert(data.error_message);
+        } else {
+          alert(data.message);
+          navigate("/dashboard");
+          localStorage.setItem("_id", data.id);
+        }
+      })
+      .catch((err) => console.error(err));
   };
 
   return (

@@ -2,7 +2,7 @@ import HTTPError from 'http-errors';
 import sha256 from 'sha256';
 
 import { getData, setData } from './dataStore';
-import { DataStore, User } from './Interfaces';
+import { DataStore, User } from './interfaces';
 import { generateID } from './helperFunctions';
 
 /**

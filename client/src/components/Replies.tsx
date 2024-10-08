@@ -3,7 +3,7 @@ import { useState } from "react";
 const Replies = () => {
   const [reply, setReply] = useState("");
 
-  const handleSubmitReply = (e) => {
+  const handleSubmitReply = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     console.log({ reply });
@@ -20,7 +20,6 @@ const Replies = () => {
           rows={5}
           value={reply}
           onChange={(e) => setReply(e.target.value)}
-          type="text"
           name="reply"
           className="modalInput"
         />
