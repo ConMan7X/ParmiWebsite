@@ -2,7 +2,7 @@ import { DataStore } from './interfaces';
 
 let data: DataStore = {
   users: [],
-  threads: [],
+  posts: [],
 };
 
 const getData = (): DataStore => {
@@ -16,7 +16,7 @@ const setData = (newData: DataStore) => {
 const clear = () => {
   data = {
     users: [],
-    threads: [],
+    posts: [],
   };
 
   return {};

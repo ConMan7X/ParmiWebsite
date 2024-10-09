@@ -10,15 +10,13 @@ export interface Reply {
   content: string;
 }
 
-export interface Thread {
+export interface Post {
   id: string;
   title: string;
   userId: string;
-  replies: Reply[];
-  likes: string[];
 }
 
 export interface DataStore {
   users: User[];
-  threads: Thread[];
+  posts: Post[];
 }

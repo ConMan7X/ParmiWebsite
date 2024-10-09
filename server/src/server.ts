@@ -6,7 +6,7 @@ import morgan from 'morgan';
 import config from './config.json';
 
 import { register, login } from './auth';
-import { createThread } from './thread';
+import { createThread } from './post';
 import { clear } from './dataStore';
 
 const app = express();
@@ -54,10 +54,10 @@ app.post('/api/login', (req: Request, res: Response) => {
   res.json(response);
 });
 
-app.post('/api/create/thread', (req: Request, res: Response) => {
-  const { thread, userId } = req.body;
+app.post('/api/create/post', (req: Request, res: Response) => {
+  const { post, userId } = req.body;
 
-  const response = createThread(thread, userId);
+  const response = createThread(post, userId);
   res.json(response);
 });
 
