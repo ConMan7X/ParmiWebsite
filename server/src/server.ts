@@ -2,6 +2,7 @@ import express, { json, Request, Response } from 'express';
 import errorHandler from 'middleware-http-errors';
 import cors from 'cors';
 import { register, login } from './auth';
+import { createThread } from './thread';
 
 const app = express();
 
@@ -32,6 +33,13 @@ app.post('/api/login', (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   const response = login(email, password);
+  res.json(response);
+});
+
+app.post('/api/create/thread', (req: Request, res: Response) => {
+  const { thread, userId } = req.body;
+
+  const response = createThread(thread, userId);
   res.json(response);
 });
 

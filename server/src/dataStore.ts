@@ -2,6 +2,7 @@ import { DataStore } from './interfaces';
 
 let data: DataStore = {
   users: [],
+  threads: [],
 };
 
 const getData = (): DataStore => {
