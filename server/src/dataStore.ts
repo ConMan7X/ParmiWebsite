@@ -13,4 +13,11 @@ const setData = (newData: DataStore) => {
   data = newData;
 };
 
-export { getData, setData };
+const clear = () => {
+  data = {
+    users: [],
+    threads: [],
+  };
+};
+
+export { getData, setData, clear };
