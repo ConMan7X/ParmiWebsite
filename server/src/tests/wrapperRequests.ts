@@ -2,6 +2,7 @@ import HTTPError from 'http-errors';
 import request from 'sync-request-curl';
 
 import { port, url } from '../config.json';
+import { error } from 'console';
 const SERVER_URL = `${url}:${port}`;
 
 const errorChecking = (statusCode: number, responseString: string | Buffer) => {
@@ -28,6 +29,16 @@ export const requestRegister = (
       email,
       password,
       username,
+    },
+  });
+  return errorChecking(res.statusCode, res.body);
+};
+
+export const requestLogin = (email: string, password: string) => {
+  const res = request('POST', SERVER_URL + '/api/login', {
+    json: {
+      email,
+      password,
     },
   });
   return errorChecking(res.statusCode, res.body);
