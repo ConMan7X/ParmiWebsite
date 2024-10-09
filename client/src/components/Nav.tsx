@@ -11,7 +11,7 @@ const Nav = () => {
 
   return (
     <nav className="navbar">
-      <h2>Threadify</h2>
+      <h2>Sydney Parmi Blog</h2>
 
       <div className="navbarRight">
         <button onClick={signOut}>Sign out</button>

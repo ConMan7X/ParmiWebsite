@@ -1,15 +1,25 @@
-import { DataStore } from "./interfaces";
+import { DataStore } from './interfaces';
 
 let data: DataStore = {
-	users: []
+  users: [],
+  posts: [],
 };
 
 const getData = (): DataStore => {
-	return data;
-}
+  return data;
+};
 
 const setData = (newData: DataStore) => {
-	data = newData;
-}
+  data = newData;
+};
 
-export {getData, setData};
+const clear = () => {
+  data = {
+    users: [],
+    posts: [],
+  };
+
+  return {};
+};
+
+export { getData, setData, clear };
