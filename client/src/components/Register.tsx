@@ -2,12 +2,12 @@ import { useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 
-const navigate = useNavigate();
-
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
