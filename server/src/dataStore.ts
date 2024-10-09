@@ -18,6 +18,8 @@ const clear = () => {
     users: [],
     threads: [],
   };
+
+  return {};
 };
 
 export { getData, setData, clear };

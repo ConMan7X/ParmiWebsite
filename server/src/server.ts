@@ -2,9 +2,12 @@ import express, { json, Request, Response } from 'express';
 import errorHandler from 'middleware-http-errors';
 import cors from 'cors';
 import morgan from 'morgan';
+
+import config from './config.json';
+
 import { register, login } from './auth';
 import { createThread } from './thread';
-import config from './config.json';
+import { clear } from './dataStore';
 
 const app = express();
 
@@ -29,8 +32,14 @@ app.get('/api', (req: Request, res: Response) => {
   });
 });
 
+app.delete('/api/clear', (req: Request, res: Response) => {
+  const response = clear();
+
+  res.json(response);
+});
+
 // Post request for registering users
-app.post('/api/register', async (req: Request, res: Response) => {
+app.post('/api/register', (req: Request, res: Response) => {
   const { email, password, username } = req.body;
 
   const response = register(email, password, username);
