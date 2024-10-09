@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Nav from "./Nav";
-import Likes from "../utils/Likes";
-import Comments from "../utils/Comments";
 
 const Home = () => {
   const [thread, setThread] = useState("");
@@ -62,17 +60,6 @@ const Home = () => {
           {threadList.map((thread) => (
             <div className="thread__item" key={thread.id}>
               <p>{thread.title}</p>
-              <div className="react__container">
-                <Likes
-                  numberOfLikes={thread.likes.length}
-                  threadId={thread.id}
-                />
-                <Comments
-                  numberOfComments={thread.replies.length}
-                  threadId={thread.id}
-                  title={thread.title}
-                />
-              </div>
             </div>
           ))}
         </div>
