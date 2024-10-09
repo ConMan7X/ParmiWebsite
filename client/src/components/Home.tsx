@@ -21,7 +21,7 @@ const Home = () => {
   }, [navigate]);
 
   const createPost = () => {
-    fetch("http://localhost:4000/api/create/post", {
+    fetch("https://parmi-website-server.vercel.app/api/create/post", {
       method: "POST",
       body: JSON.stringify({
         post,
