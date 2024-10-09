@@ -17,7 +17,7 @@ const Login = () => {
   };
 
   const loginUser = () => {
-    fetch("http://localhost:4000/api/login", {
+    fetch("https://parmi-website-server.vercel.app/api/login", {
       method: "POST",
       body: JSON.stringify({
         email,

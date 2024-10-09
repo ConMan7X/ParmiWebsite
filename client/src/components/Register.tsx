@@ -19,7 +19,7 @@ const Register = () => {
   };
 
   const signUp = () => {
-    fetch("http://localhost:4000/api/register", {
+    fetch("https://parmi-website-server.vercel.app/api/register", {
       method: "POST",
       body: JSON.stringify({
         email,
